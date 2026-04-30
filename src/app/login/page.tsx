@@ -80,13 +80,13 @@ export default function LoginPage() {
               Sign In
             </button>
 
-            {/* <button 
+            <button 
               type="button" 
               onClick={handleSetup}
               className="w-full bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-sm font-medium py-2 px-4 rounded-md transition-colors mt-2"
             >
               Run Initial Setup (Creates Admin)
-            </button> */}
+            </button>
           </form>
         </CardContent>
       </Card>
