@@ -14,6 +14,7 @@ export async function GET() {
 
     const passwordHash = await bcrypt.hash("admin123", 10);
     const adminUser = await User.create({
+      name: "Admin",
       username: "admin",
       passwordHash,
       role: "admin"
