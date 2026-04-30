@@ -53,7 +53,7 @@ export default function CameraPage() {
       })
       .catch((err) => {
         console.error("Error accessing webcam:", err);
-        setStatus("Camera Access Denied");
+        setStatus(`Camera Access Denied: ${err.name || err.message || "Unknown error"}`);
       });
   };
 
@@ -146,6 +146,7 @@ export default function CameraPage() {
               ref={videoRef} 
               autoPlay 
               muted 
+              playsInline
               className="absolute inset-0 w-full h-full object-cover"
               onPlay={handleVideoPlay}
             />

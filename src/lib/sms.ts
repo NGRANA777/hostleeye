@@ -6,7 +6,7 @@
 export async function sendSMS(to: string, message: string) {
   const telegramToken = process.env.TELEGRAM_BOT_TOKEN;
   const telegramChatId = process.env.TELEGRAM_CHAT_ID;
-  const ntfyTopic = process.env.NTFY_TOPIC;
+  const ntfyTopic = process.env.NTFY_TOPIC?.replace(/"/g, '');
   const phoneNumber = process.env.ALERT_PHONE || to;
 
   console.log(`[ALERT INITIATED] Target: ${phoneNumber}`);
