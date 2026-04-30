@@ -5,11 +5,11 @@ import User from "@/models/User";
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { userId: string } }
+  context: { params: Promise<{ userId: string }> }
 ) {
   try {
     await dbConnect();
-    const { userId } = params;
+    const { userId } = await context.params;
 
     const user = await User.findById(userId);
     if (!user) {

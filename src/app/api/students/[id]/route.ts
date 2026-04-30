@@ -4,11 +4,11 @@ import Student from "@/models/Student";
 
 export async function GET(
   request: Request,
-  { params }: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
-    const { id } = await params;
+    const { id } = await context.params;
     const student = await Student.findById(id);
     if (!student) {
       return NextResponse.json({ success: false, error: "Not found" }, { status: 404 });
@@ -21,11 +21,11 @@ export async function GET(
 
 export async function PUT(
   request: Request,
-  { params }: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
-    const { id } = await params;
+    const { id } = await context.params;
     const body = await request.json();
     const student = await Student.findByIdAndUpdate(id, body, {
       new: true,
@@ -42,11 +42,11 @@ export async function PUT(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: Promise<{ id: string }> }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
-    const { id } = await params;
+    const { id } = await context.params;
     const student = await Student.findByIdAndDelete(id);
     if (!student) {
       return NextResponse.json({ success: false, error: "Not found" }, { status: 404 });
